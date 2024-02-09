@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style%}
+<style>
+    body{
+        margin-left: 2px;
+    }
+    .details{
+        margin-left: 110px;
+    }
+</style>
+<br>
+<title>{{ books.name }} Details</title>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="container">
+        <h3 class="details">{{ books.name }} Details</h3>
+        <p><strong>Book name:</strong> {{ books.name }}</p>
+        <p><strong>image</strong> <br>
+        {% if books.image %}
+            <img src="{{ books.image.url }}" alt="{{ books.name }} Image" style="max-width: 350px; margin-left: 50px; margin-top: 20px;">
+        {% else %} </p>
+            <p>No image available</p>
+        {% endif %}  
+        <p><strong>Author:</strong> {{ books.author }}</p>
+        <p><strong>ISBN:</strong> {{ books.isbn }}</p>
+        <p><strong>Publish Date:</strong> {{ books.publish_date }}</p>
+        <p><a href="{% url 'all_book' %}">Back to all books</a></p>
+    </div>
+
+{% endblock %}
